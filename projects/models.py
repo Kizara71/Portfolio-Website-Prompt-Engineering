@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    thumbnail = models.ImageField(upload_to='portfolio/thumbnails/')
+    thumbnail = CloudinaryField('image')
     description = models.TextField()
     problem_solved = models.TextField()
     my_role = models.TextField()
