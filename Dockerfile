@@ -35,5 +35,5 @@ USER user
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Make sure we use port 7860
-CMD python manage.py migrate && gunicorn portfolio.wsgi:application --bind 0.0.0.0:7860
+# Make sure we use port 7860 and create admin if requested
+CMD python manage.py migrate && python create_admin.py && gunicorn portfolio.wsgi:application --bind 0.0.0.0:7860
