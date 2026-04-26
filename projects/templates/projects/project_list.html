@@ -1,19 +1,74 @@
 {% extends 'projects/base.html' %}
 {% load static %}
 
-{% block title %}Games | My Portfolio{% endblock %}
+{% block title %}Joy Magdy | Game Developer{% endblock %}
 
 {% block content %}
-<div class="tabs-container">
-    <div class="tab-controls">
-        <button class="tab-btn active" data-target="games-tab">GAMES</button>
-        <button class="tab-btn" data-target="about-tab">ABOUT ME</button>
-    </div>
+<div class="spa-container">
 
-    <div class="tab-content">
-        <!-- GAMES TAB -->
-        <div id="games-tab" class="tab-pane active">
-            <div class="grid-container">
+    <!-- HOME SECTION -->
+    <section id="home" class="spa-section hero-section">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="JOY MAGDY">JOY MAGDY</h1>
+            <h2 class="hero-subtitle">Game Development Instructor & Academic Head</h2>
+            <p class="hero-tagline">Crafting immersive interactive experiences and shaping the next generation of developers.</p>
+            <a href="#projects" class="btn primary-btn glow neon-btn">View My Work</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="spa-section about-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-image-wrapper">
+                <div class="profile-placeholder">
+                    <span>JM</span>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Bridging Creativity and Logic</h3>
+                <p>As a Game Development Instructor and Academic Head at Cairo University, I thrive at the intersection of education, software engineering, and game design. I specialize in turning complex logic into playable, engaging realities.</p>
+                <p>My passion lies in robust architecture, clean code, and pushing the boundaries of interactive media.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="spa-section skills-section">
+        <h2 class="section-title">Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🎮</div>
+                <h3>Unity</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">#️⃣</div>
+                <h3>C#</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚙️</div>
+                <h3>C++</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">☕</div>
+                <h3>Java</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔀</div>
+                <h3>Git</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="spa-section projects-section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid-container">
+            {% if projects %}
                 {% for project in projects %}
                 <a href="{% url 'projects:project_detail' project.slug %}" class="game-card">
                     <div class="card-image-wrapper">
@@ -23,7 +78,7 @@
                         <div class="placeholder-image"><span>No Image</span></div>
                         {% endif %}
                         <div class="card-overlay">
-                            <span class="view-btn">View Details</span>
+                            <span class="view-btn">Initialize</span>
                         </div>
                     </div>
                     <div class="card-info">
@@ -31,40 +86,55 @@
                         <div class="card-tools">{{ project.tools_used }}</div>
                     </div>
                 </a>
-                {% empty %}
-                <div class="empty-state">
-                    <p>No games added yet. Check back soon!</p>
-                </div>
                 {% endfor %}
-            </div>
+            {% else %}
+                <!-- Pre-filled template logic as requested -->
+                <a href="#" class="game-card">
+                    <div class="card-image-wrapper">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #4f0000, #ff0055);"><span>Logic Rift</span></div>
+                        <div class="card-overlay"><span class="view-btn">Demo Mode</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">Logic Rift</h3>
+                        <div class="card-tools">Unity, C#</div>
+                    </div>
+                </a>
+                <a href="#" class="game-card">
+                    <div class="card-image-wrapper">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #001f3f, #0074D9);"><span>PONG</span></div>
+                        <div class="card-overlay"><span class="view-btn">Demo Mode</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">What Could Possibly Go PONG</h3>
+                        <div class="card-tools">C++, Custom Engine</div>
+                    </div>
+                </a>
+                <a href="#" class="game-card">
+                    <div class="card-image-wrapper">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #2ecc40, #01ff70);"><span>XO</span></div>
+                        <div class="card-overlay"><span class="view-btn">Demo Mode</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">Multiplayer XO</h3>
+                        <div class="card-tools">Java, Sockets</div>
+                    </div>
+                </a>
+            {% endif %}
         </div>
+    </section>
 
-        <!-- ABOUT TAB -->
-        <div id="about-tab" class="tab-pane">
-            <div class="about-section">
-                <div class="about-image-wrapper">
-                    <!-- Placeholder for profile image, ideally user replaces this -->
-                    <div class="profile-placeholder">
-                        <img src="{% static 'projects/placeholder_profile.png' %}" alt="Joy Magdy" onerror="this.style.display='none'">
-                        <span>JM</span>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <h2 class="about-title">Hi, I'm Joy Magdy</h2>
-                    <h3 class="about-subtitle">Game Developer & Full-Stack Engineer</h3>
-                    <p class="about-bio">
-                        Welcome to my portfolio! I specialize in creating immersive interactive experiences. 
-                        My journey bridges the gap between creative game design and solid software engineering.
-                        I love solving complex problems and turning innovative ideas into playable realities.
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:contact@example.com" class="btn primary-btn">Email Me</a>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">GitHub</a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">LinkedIn</a>
-                    </div>
-                </div>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="spa-section contact-section">
+        <h2 class="section-title">Transmission</h2>
+        <div class="contact-box">
+            <p>Ready to collaborate or want to discuss game development?</p>
+            <div class="contact-links">
+                <a href="mailto:contact@example.com" class="btn primary-btn glow neon-btn">Initiate Comms</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">LinkedIn</a>
             </div>
         </div>
-    </div>
+    </section>
+
 </div>
 {% endblock %}
