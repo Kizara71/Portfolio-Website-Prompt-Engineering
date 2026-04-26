@@ -22,8 +22,12 @@ RUN pip install -r requirements.txt
 # Create a non-root user with UID 1000 (Required for Hugging Face Spaces)
 RUN useradd -m -u 1000 user
 
-# Copy project files and change ownership to the new user
-COPY --chown=user:user . /app/
+# Copy project files
+COPY . /app/
+
+# Create staticfiles and media directories, and change ownership of the entire /app directory
+RUN mkdir -p /app/staticfiles /app/media \
+    && chown -R user:user /app/
 
 # Switch to the non-root user
 USER user
