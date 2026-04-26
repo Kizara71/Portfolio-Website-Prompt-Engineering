@@ -13,6 +13,11 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = []
+if 'SPACE_HOST' in os.environ:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ['SPACE_HOST']}")
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

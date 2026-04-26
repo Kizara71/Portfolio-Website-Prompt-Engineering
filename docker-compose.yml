@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "7860:7860"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=local-secret-key-for-testing
+      # Add your neon database URL here if testing locally
+      # - DATABASE_URL=postgresql://[user]:[password]@[endpoint].neon.tech/[dbname]?sslmode=require

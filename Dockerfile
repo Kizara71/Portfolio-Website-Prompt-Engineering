@@ -3,12 +3,12 @@ FROM python:3.10-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV PORT 8000
+ENV PORT 7860
 
 # Set work directory
 WORKDIR /app
 
-# Install system dependencies (for psycopg2 and general build)
+# Install system dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc libpq-dev \
     && apt-get clean \
@@ -19,11 +19,17 @@ COPY requirements.txt /app/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy project
-COPY . /app/
+# Create a non-root user with UID 1000 (Required for Hugging Face Spaces)
+RUN useradd -m -u 1000 user
+
+# Copy project files and change ownership to the new user
+COPY --chown=user:user . /app/
+
+# Switch to the non-root user
+USER user
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Make the start script executable (if we use one), otherwise just command
-CMD python manage.py migrate && gunicorn portfolio.wsgi:application --bind 0.0.0.0:$PORT
+# Make sure we use port 7860
+CMD python manage.py migrate && gunicorn portfolio.wsgi:application --bind 0.0.0.0:7860
