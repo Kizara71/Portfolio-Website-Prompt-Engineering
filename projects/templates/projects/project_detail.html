@@ -1,0 +1,67 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}{{ project.title }} | Portfolio{% endblock %}
+
+{% block content %}
+<div class="project-detail-container">
+    <div class="back-link-wrapper">
+        <a href="{% url 'projects:project_list' %}" class="back-link">
+            <span class="arrow">&larr;</span> Back to Games
+        </a>
+    </div>
+
+    <div class="project-hero">
+        {% if project.thumbnail %}
+        <div class="hero-image" style="background-image: url('{{ project.thumbnail.url }}');"></div>
+        {% else %}
+        <div class="hero-image placeholder-hero">
+            <span>{{ project.title }}</span>
+        </div>
+        {% endif %}
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">{{ project.title }}</h1>
+            <div class="hero-tools">
+                <span class="tool-badge">{{ project.tools_used }}</span>
+            </div>
+            
+            <div class="hero-actions">
+                {% if project.playable_link %}
+                <a href="{{ project.playable_link }}" target="_blank" rel="noopener noreferrer" class="btn primary-btn glow">Play Game</a>
+                {% endif %}
+                {% if project.github_link %}
+                <a href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">View on GitHub</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="project-body">
+        <section class="detail-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="section-text">{{ project.description|linebreaks }}</p>
+        </section>
+
+        <div class="detail-grid">
+            <section class="detail-section highlight-box">
+                <h2 class="section-title">My Role</h2>
+                <p class="section-text">{{ project.my_role|linebreaks }}</p>
+            </section>
+
+            <section class="detail-section highlight-box">
+                <h2 class="section-title">Problem Solved</h2>
+                <p class="section-text">{{ project.problem_solved|linebreaks }}</p>
+            </section>
+        </div>
+
+        <section class="detail-section">
+            <h2 class="section-title">Key Features</h2>
+            <ul class="feature-list">
+                {% for feature in features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</div>
+{% endblock %}

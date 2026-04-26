@@ -1,0 +1,70 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block title %}Games | My Portfolio{% endblock %}
+
+{% block content %}
+<div class="tabs-container">
+    <div class="tab-controls">
+        <button class="tab-btn active" data-target="games-tab">GAMES</button>
+        <button class="tab-btn" data-target="about-tab">ABOUT ME</button>
+    </div>
+
+    <div class="tab-content">
+        <!-- GAMES TAB -->
+        <div id="games-tab" class="tab-pane active">
+            <div class="grid-container">
+                {% for project in projects %}
+                <a href="{% url 'projects:project_detail' project.slug %}" class="game-card">
+                    <div class="card-image-wrapper">
+                        {% if project.thumbnail %}
+                        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} thumbnail" class="card-image">
+                        {% else %}
+                        <div class="placeholder-image"><span>No Image</span></div>
+                        {% endif %}
+                        <div class="card-overlay">
+                            <span class="view-btn">View Details</span>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">{{ project.title }}</h3>
+                        <div class="card-tools">{{ project.tools_used }}</div>
+                    </div>
+                </a>
+                {% empty %}
+                <div class="empty-state">
+                    <p>No games added yet. Check back soon!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- ABOUT TAB -->
+        <div id="about-tab" class="tab-pane">
+            <div class="about-section">
+                <div class="about-image-wrapper">
+                    <!-- Placeholder for profile image, ideally user replaces this -->
+                    <div class="profile-placeholder">
+                        <img src="{% static 'projects/placeholder_profile.png' %}" alt="Joy Magdy" onerror="this.style.display='none'">
+                        <span>JM</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="about-title">Hi, I'm Joy Magdy</h2>
+                    <h3 class="about-subtitle">Game Developer & Full-Stack Engineer</h3>
+                    <p class="about-bio">
+                        Welcome to my portfolio! I specialize in creating immersive interactive experiences. 
+                        My journey bridges the gap between creative game design and solid software engineering.
+                        I love solving complex problems and turning innovative ideas into playable realities.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:contact@example.com" class="btn primary-btn">Email Me</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">GitHub</a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
