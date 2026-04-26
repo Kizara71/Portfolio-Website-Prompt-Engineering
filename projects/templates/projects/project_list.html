@@ -1,7 +1,7 @@
 {% extends 'projects/base.html' %}
 {% load static %}
 
-{% block title %}Joy Magdy | Game Developer{% endblock %}
+{% block title %}Joy Magdy | Game Developer - Software Engineer{% endblock %}
 
 {% block content %}
 <div class="spa-container">
@@ -10,59 +10,30 @@
     <section id="home" class="spa-section hero-section">
         <div class="hero-content">
             <h1 class="glitch" data-text="JOY MAGDY">JOY MAGDY</h1>
-            <h2 class="hero-subtitle">Game Development Instructor & Academic Head</h2>
+            <h2 class="hero-subtitle">Game Developer - Software Engineer</h2>
             <p class="hero-tagline">Crafting immersive interactive experiences and shaping the next generation of developers.</p>
             <a href="#projects" class="btn primary-btn glow neon-btn">View My Work</a>
         </div>
     </section>
 
+    <div class="cyber-divider"></div>
+
     <!-- ABOUT SECTION -->
     <section id="about" class="spa-section about-section">
         <h2 class="section-title">About Me</h2>
         <div class="about-grid">
-            <div class="about-image-wrapper">
-                <div class="profile-placeholder">
-                    <span>JM</span>
-                </div>
-            </div>
             <div class="about-text">
                 <h3>Bridging Creativity and Logic</h3>
                 <p>As a Game Development Instructor and Academic Head at Cairo University, I thrive at the intersection of education, software engineering, and game design. I specialize in turning complex logic into playable, engaging realities.</p>
                 <p>My passion lies in robust architecture, clean code, and pushing the boundaries of interactive media.</p>
             </div>
+            <div class="about-image-wrapper">
+                <img src="{% static 'projects/images/profile.jpg' %}" alt="Joy Magdy" class="profile-image">
+            </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="spa-section skills-section">
-        <h2 class="section-title">Core Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon">🎮</div>
-                <h3>Unity</h3>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">#️⃣</div>
-                <h3>C#</h3>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">⚙️</div>
-                <h3>C++</h3>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">☕</div>
-                <h3>Java</h3>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🐍</div>
-                <h3>Python</h3>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🔀</div>
-                <h3>Git</h3>
-            </div>
-        </div>
-    </section>
+    <div class="cyber-divider"></div>
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="spa-section projects-section">
@@ -122,6 +93,41 @@
             {% endif %}
         </div>
     </section>
+
+    <div class="cyber-divider"></div>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="spa-section skills-section">
+        <h2 class="section-title">Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🎮</div>
+                <h3>Unity</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">#️⃣</div>
+                <h3>C#</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚙️</div>
+                <h3>C++</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">☕</div>
+                <h3>Java</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔀</div>
+                <h3>Git</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="cyber-divider"></div>
 
     <!-- CONTACT SECTION -->
     <section id="contact" class="spa-section contact-section">

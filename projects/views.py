@@ -15,3 +15,6 @@ def project_detail(request, slug):
         'project': project,
         'features': features
     })
+
+def resume(request):
+    return render(request, 'projects/resume.html')

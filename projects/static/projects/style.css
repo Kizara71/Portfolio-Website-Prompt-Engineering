@@ -208,10 +208,35 @@ a {
     max-width: 600px;
 }
 
+/* Cyber Dividers */
+.cyber-divider {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 50%, transparent 100%);
+    box-shadow: 0 0 15px var(--accent-primary);
+    margin: 2rem 0;
+    position: relative;
+    opacity: 0.7;
+}
+
+.cyber-divider::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 8px;
+    background: var(--bg-dark);
+    border-top: 2px solid var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary) inset;
+}
+
 /* About Section */
 .about-grid {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 3rem;
     align-items: center;
 }
@@ -219,7 +244,8 @@ a {
 @media (min-width: 768px) {
     .about-grid {
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 
@@ -227,19 +253,24 @@ a {
     flex-shrink: 0;
 }
 
-.profile-placeholder {
+.profile-image {
     width: 250px;
     height: 250px;
-    border-radius: 10px; /* Squarish for gaming vibe */
-    background: linear-gradient(135deg, #4a0000, var(--accent-primary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    font-weight: 900;
-    color: white;
-    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.6), inset 0 0 20px rgba(255, 0, 85, 0.4);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(255, 0, 85, 0.8), inset 0 0 30px rgba(255, 0, 85, 0.6);
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
 }
 
 .about-text h3 {

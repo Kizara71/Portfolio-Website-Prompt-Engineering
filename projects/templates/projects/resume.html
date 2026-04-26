@@ -1,0 +1,31 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block title %}Resume | Joy Magdy{% endblock %}
+
+{% block content %}
+<div class="project-detail-container" style="text-align: center;">
+    <div class="back-link-wrapper" style="text-align: left;">
+        <a href="{% url 'projects:project_list' %}" class="back-link">
+            <span class="arrow">&larr;</span> Back to Home
+        </a>
+    </div>
+
+    <h1 class="section-title">My Resume</h1>
+    
+    <div class="highlight-box" style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="margin-bottom: 2rem; font-size: 1.2rem; color: var(--text-muted);">
+            View my professional experience, academic history, and complete skillset.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{% static 'projects/resume.pdf' %}" target="_blank" class="btn primary-btn glow neon-btn">
+                Open PDF Version
+            </a>
+            <a href="{% static 'projects/resume.pdf' %}" download class="btn secondary-btn">
+                Download PDF
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
